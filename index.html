@@ -8,39 +8,28 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <style>
       p {
-        width: 364px;
+        width: 350px;
+        color: rgb(1, 7, 95);
       }
     </style>
   </head>
   <body>
-    <h1>Lessons List</h1>
+    <h1>Vue Section</h1>
     <div id="app">
-      <p>{{ data }}</p>
+      <p>{{ lessons }}</p>
     </div>
     <script>
       const app = new Vue({
         el: "#app",
-        data: [
-          {
-            topic: "math",
-            location: "London",
-            price: 100,
-            topic: "math",
-            location: "Liverpool",
-            price: 80,
-            topic: "math",
-            location: "Oxford",
-            price: 90,
-            topic: "math",
-            location: "Bristol",
-            price: 120,
-          },
-        ],
-        created() {
-          this.getAllLessons();
+        data: {
+          lessons: [],
         },
+        created() {
+          this.getLessons();
+        },
+
         methods: {
-          async getAllLessons() {
+          async getLessons() {
             const BASE_URL = "http://localhost:3000";
             const lessonsPromise = await fetch(`${BASE_URL}/lessons`);
             this.lessons = await lessonsPromise.json();

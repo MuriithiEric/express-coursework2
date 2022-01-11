@@ -2,17 +2,15 @@ var express = require("express");
 var http = require("http");
 var app = express();
 
+var lessons = require("./lessons");
+var users = require("./users");
+
 app.get("/lessons", (request, response) => {
-  response.send([
-    { topic: "math", location: "London", price: 100 },
-    { topic: "math", location: "Liverpool", price: 80 },
-    { topic: "math", location: "Oxford", price: 90 },
-    { topic: "math", location: "Bristol", price: 120 },
-  ]);
+  return response.json(lessons);
 });
 
 app.get("/users", (request, response) => {
-  response.send([{ email: "user@email.com", password: "mypassword" }]);
+  return response.json(users);
 });
 
 app.use(function (request, response) {
