@@ -1,16 +1,21 @@
 var express = require("express");
+const cors = require("cors");
+
 var http = require("http");
 var app = express();
 
-var lessons = require("./lessons");
-var users = require("./users");
+var lessons = require("./data/lessons.json");
+var users = require("./data/users.json");
 
-app.get("/lessons", (request, response) => {
-  return response.json(lessons);
+//CORS allows you to configure the web API's security. It has to do with allowing other domains to make requests against your web API.
+app.use(cors());
+
+app.get("/lessons", (req, res) => {
+  res.json(lessons);
 });
 
-app.get("/users", (request, response) => {
-  return response.json(users);
+app.get("/users", (req, res) => {
+  res.json(users);
 });
 
 app.use(function (request, response) {

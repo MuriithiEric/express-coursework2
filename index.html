@@ -15,7 +15,7 @@
   </head>
   <body>
     <h1>Vue Section</h1>
-    <div id="app">
+    <div for="lesson in lessons" id="app">
       <p>{{ lessons }}</p>
     </div>
     <script>
@@ -25,11 +25,11 @@
           lessons: [],
         },
         created() {
-          this.getLessons();
+          this.lessons();
         },
 
         methods: {
-          async getLessons() {
+          async lessons() {
             const BASE_URL = "http://localhost:3000";
             const lessonsPromise = await fetch(`${BASE_URL}/lessons`);
             this.lessons = await lessonsPromise.json();
