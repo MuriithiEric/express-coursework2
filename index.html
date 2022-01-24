@@ -5,37 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lessons List</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <style>
-      p {
-        width: 350px;
-        color: rgb(1, 7, 95);
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Vue Section</h1>
-    <div for="lesson in lessons" id="app">
-      <p>{{ lessons }}</p>
-    </div>
-    <script>
-      const app = new Vue({
-        el: "#app",
-        data: {
-          lessons: [],
-        },
-        created() {
-          this.lessons();
-        },
-
-        methods: {
-          async lessons() {
-            const BASE_URL = "http://localhost:3000";
-            const lessonsPromise = await fetch(`${BASE_URL}/lessons`);
-            this.lessons = await lessonsPromise.json();
+    <script src="https://unpkg.com/vue"></script>
+    <body>
+      <div id="store">{{product}}</div>
+      <script>
+        let store = new Vue({
+          el: "#store",
+          data: {
+            product: [],
           },
-        },
-      });
-    </script>
-  </body>
+          created: function () {
+            console.log("http://localhost:3000").then(function (response) {
+              response.json().then(function (json) {
+                StorageEvent.product = json;
+                console.log(json);
+              });
+            });
+          },
+        });
+      </script>
+    </body>
+  </head>
 </html>
