@@ -19,10 +19,13 @@
         padding: 2rem;
         margin-right: 1.2rem;
       }
+      p {
+        font-size: 1.5rem;
+      }
     </style>
     <body>
       <div id="store">
-        <h1>Lesson Display</h1>
+        <p>Lesson Display</p>
         <div class="ul-container">
           <ul v-for="lesson in lessons" v-bind:key="lesson.location">
             <li>topic: {{ lesson.topic }}</li>
