@@ -44,16 +44,6 @@
             }).then(lessons => {
               this.lessons = lessons
             })
-          },
-          methods: {
-            getAllLessons () {
-              const BASE_URL = 'http://localhost:3000'
-              fetch(`${BASE_URL}/lessons`).then((response) => {
-                return response.json()
-              }).then(lessons => {
-                this.lessons = lessons
-              })
-            }
           }
         });
       </script>
